@@ -1,0 +1,77 @@
+/* pages/pageStory/pageStory.wxss */
+.tabs{
+  display: flex;
+  height: 60rpx;
+}
+.tabs .tab{
+  flex: 1;
+  height: 60rpx;
+}
+.tabs .tab .nav{
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 30rpx;
+}
+.active-tab{
+  padding:0 4rpx 4rpx;
+  border-bottom: 2rpx solid red;
+}
+.story-item {
+  padding:0 15rpx;
+}
+.story-item >image{
+  width: 100%;
+}
+.story-item .story-user {
+  display: flex;
+  padding:0 20rpx;
+}
+.story-item .story-user .story-user-photo{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.story-item .story-user .story-user-photo image{
+  width: 100%;
+  height: 100%;
+}
+.story-item .story-user .story-user-name{
+  float: left;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  margin-right:30rpx; 
+}
+.line{
+  height: 10rpx;
+  width: 100%;
+  background: #000;
+}
+
+.pic-detail{
+  display: flex;
+  flex-direction: row ;
+}
+.pic-photo{
+  flex: 1;
+  padding:5rpx 20rpx;
+} 
+.pic-photo image{
+  width: 100%;
+}
+.pic-detail .pic-desc{
+  flex: 1;
+   padding:20rpx;
+}
+.story-item-title{
+
+  padding:0 20rpx;
+  font-size: 32rpx;
+}
+.separate{
+  height: 6rpx;
+  width: 100%;
+  margin-top:35rpx;
+  background: #ccc;
+}
+

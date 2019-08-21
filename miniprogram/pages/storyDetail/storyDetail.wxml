@@ -1,0 +1,31 @@
+<!--miniprogram/pages/storyDetail/storyDetail.wxml-->
+<!--miniprogram/pages/storyDetail/storyDetail.wxml-->
+<view class='content'>
+  <!-- <view class="user">
+    <view class='user-avatar'>
+      <image src='{{item.item.avatar}}'></image>
+    </view>
+    <view class="user-name">
+        {{item.item.nickName}}
+    </view>
+  </view> -->
+  <view >
+      <view class='image-item' wx:if='{{item.item.type==="image"}}'>
+        <image mode='widthFix' src='{{item.item.filePath}}'></image>
+      </view>
+      <view class='image-item' wx:if='{{item.item.type==="text"}}'>
+        <text>
+        {{item.item.text}}
+        </text>
+      </view>
+      <view class='discuss'>
+        <input class='discuss-value' value="{{discussVlaue}}"  bindinput="bindTextInputBlur"></input>
+        <button bindtap="postDiscuss">发表</button>
+      </view>
+      <view class='discuss-content' wx:for="{{discussList}}" wx:for-item="item" wx:key="index">
+        <text>{{item.discussContent}}</text>
+      </view>
+  </view>
+
+</view>
+

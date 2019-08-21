@@ -1,0 +1,40 @@
+<!--miniprogram/pages/myStory/myStory.wxml-->
+ <!-- 上传图片 -->
+ <view style='height:106rpx;'></view>
+   <view class='tabs'>
+    <view class='tab' bindtap='onClickChangeTab' data-index="1">
+      <view class='nav'>
+        <text class='{{isText?"active-tab":""}}'>笑话</text>
+      </view>
+    </view>
+    <view  class='tab' bindtap='onClickChangeTab' data-index="2">
+      <view class='nav'>
+          <text class='{{!isText?"active-tab":""}}'>图片</text>
+      </view>
+    </view>
+  </view>
+  <view class="uploader">
+    <!-- <view class='user'>
+      <view class='user-avatar'>
+      <button 
+        bindgetuserinfo="onGetUserInfo" 
+        class='userinfo-avatar' 
+        open-type='getUserInfo' 
+        style="background-image: url({{avatarUrl}})"></button>
+      </view>
+      <view class='user-name'>{{userInfo.nickName}}</view>
+    </view> -->
+    
+    <view wx:if="{{!isText}}" class="uploader-text" bindtap="doUpload">
+      <text>+</text>
+    </view>
+    <view class="uploader-container" wx:if="{{imgUrl}}">
+      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+    </view>
+  </view>
+  <view class='area'  wx:if="{{isText}}">
+    <textarea class='text-area' value="{{textArea}}"  bindinput="bindTextAreaBlur" placeholder="那些事" />
+  </view>
+  <view>
+    <button bindtap="subChoose">提交</button>
+  </view>
