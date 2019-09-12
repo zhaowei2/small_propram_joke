@@ -7,7 +7,8 @@ Page({
    */
   data: {
     pageSize:16,
-    pageNum: 0,
+    textPageNum: 0,
+    picPageNum:0,
     isText:true,
     textBaseData:[],
     picBaseData:[],
@@ -21,6 +22,13 @@ Page({
   onLoad: function (options) {
     this.initJoke()
     this.initJokePic()
+  },
+  previewImg(e){
+    let src = e.currentTarget.dataset['src'];
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: [src] // 需要预览的图片http链接列表
+    })
   },
   // 切换选项卡
   onClickChangeTab(e){
@@ -196,22 +204,22 @@ Page({
     const db = wx.cloud.database();
     const MAX_LIMIT = this.data.pageSize;
     const that = this;
-    let skipNum = this.data.pageNum * MAX_LIMIT
+    let skipNum = this.data.textPageNum * MAX_LIMIT
     // 文本
     if (skipNum) {
       db.collection('joke_tbl').skip(skipNum).limit(MAX_LIMIT).orderBy('createTime', 'desc').get().then(res => {
-        let pageNum = that.data.pageNum + 1
+        let pageNum = that.data.textPageNum + 1
         that.setData({
-          pageNum: pageNum,
+          textPageNum: pageNum,
           textBaseData: [...that.data.textBaseData, ...res.data]
         })
       })
     } else {
       db.collection('joke_tbl').limit(MAX_LIMIT).orderBy('createTime', 'desc').get().then(res => {
         console.log(res)
-        let pageNum = that.data.pageNum + 1
+        let pageNum = that.data.textPageNum + 1
         that.setData({
-          pageNum: pageNum,
+          textPageNum: pageNum,
           textBaseData: [...that.data.textBaseData, ...res.data]
         })
       })
@@ -229,22 +237,22 @@ Page({
     const db = wx.cloud.database();
     const MAX_LIMIT = this.data.pageSize;
     const that = this;
-    let skipNum = this.data.pageNum * MAX_LIMIT
+    let skipNum = this.data.picPageNum * MAX_LIMIT
     // 文本
     if (skipNum) {
       db.collection('joke_pic_tbl').skip(skipNum).limit(MAX_LIMIT).orderBy('createTime', 'desc').get().then(res => {
-        let pageNum = that.data.pageNum + 1
+        let pageNum = that.data.picPageNum + 1
         that.setData({
-          pageNum: pageNum,
+          picPageNum: pageNum,
           picBaseData: [...that.data.picBaseData, ...res.data]
         })
       })
     } else {
       db.collection('joke_pic_tbl').limit(MAX_LIMIT).orderBy('createTime', 'desc').get().then(res => {
         console.log(res)
-        let pageNum = that.data.pageNum + 1
+        let pageNum = that.data.picPageNum + 1
         that.setData({
-          pageNum: pageNum,
+          picPageNum: pageNum,
           picBaseData: [...that.data.picBaseData, ...res.data]
         })
       })
@@ -302,6 +310,7 @@ Page({
    * Called when page reach bottom
    */
   onReachBottom: function () {
+    console.log(11111111)
     if(this.data.isText){
       if ((this.data.textPageNum * this.data.pageSize) < this.data.textTotal) {
         this.initJoke()

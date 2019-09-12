@@ -71,7 +71,7 @@
     <!-- img -->
     <view class='pic-detail' data-item="{{item}}" >
       <view class='pic-photo'>
-        <image mode='widthFix' src="{{item.filePath}}"></image>  
+        <image mode="widthFix" src="{{item.filePath}}" data-src="{{item.filePath}}" bindtap='previewImg'>></image>  
       </view>
     </view>
     <!-- user-discuss -->

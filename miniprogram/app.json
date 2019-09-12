@@ -11,5 +11,15 @@
     "navigationBarTitleText": "千姬笑话",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "主页"
+    },{
+      "pagePath": "pages/uploadStory/uploadStory",
+      "text": "上传"
+    }]
+  }
 }
